@@ -6,7 +6,7 @@
   <title>Kivo | Autonomous Developer Agent Teams</title>
   <meta name="description" content="Deploy autonomous AI agent teams pre-configured with defined roles, prompts, persistent memory, and strict human-in-the-loop governance.">
   
-  <!-- SEO & Favicons -->
+  <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="public/KIVO.svg">
   
   <!-- Premium Typography -->
@@ -38,7 +38,7 @@
     }
   </script>
   
-  <!-- Custom CSS for clean animations and subtle effects -->
+  <!-- Native CSS Animations for Floating Dashboard Widgets -->
   <style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
@@ -57,10 +57,27 @@
 
     /* Ambient Blue/Green Glow Effects */
     .glow-spot-blue {
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
     }
     .glow-spot-green {
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    /* High-Fidelity Floating Animations (Match Next.js Bouncing Widgets) */
+    @keyframes float-up {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes float-down {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .animate-float-up {
+      animation: float-up 5s ease-in-out infinite;
+    }
+    .animate-float-down {
+      animation: float-down 6s ease-in-out infinite;
     }
   </style>
 </head>
@@ -68,12 +85,14 @@
 
   <!-- Ambient Light Grid and Blue/Green Glow Background -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Focused top-center radial glow -->
+    <div class="absolute left-1/2 -translate-x-1/2 top-0 w-[500px] h-[500px] bg-brand-blue/5 opacity-40 blur-[100px] rounded-full"></div>
     <!-- Very soft blue glow top left -->
-    <div class="absolute -top-[10%] left-[10%] w-[70%] h-[60%] glow-spot-blue blur-[60px] opacity-80 animate-[pulse_6s_ease-in-out_infinite]"></div>
+    <div class="absolute -top-[10%] left-[10%] w-[75%] h-[65%] glow-spot-blue blur-[60px] opacity-80"></div>
     <!-- Very soft green glow bottom right -->
-    <div class="absolute -bottom-[20%] right-[10%] w-[60%] h-[60%] glow-spot-green blur-[80px] opacity-70 animate-[pulse_8s_ease-in-out_infinite]"></div>
-    <!-- Subtle Grid pattern overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#00000002_1px,transparent_1px),linear-gradient(to_bottom,#00000002_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <div class="absolute -bottom-[20%] right-[10%] w-[65%] h-[65%] glow-spot-green blur-[80px] opacity-70"></div>
+    <!-- Original Page Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
   </div>
 
   <!-- Main Navigation Header -->
@@ -94,7 +113,7 @@
   </header>
 
   <!-- Product Hero Section -->
-  <section class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-20">
+  <section class="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-32">
     <div class="grid lg:grid-cols-12 gap-16 items-center">
       
       <!-- Hero Copy -->
@@ -115,98 +134,118 @@
           <a href="https://auth.sabialabs.de/login" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-brand-blue hover:bg-blue-700 text-white text-sm font-semibold transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5">
             Launch Kivo Portal <span class="inline-block ml-1.5">↗</span>
           </a>
+          <a href="#templates" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-xl border border-zinc-200 hover:bg-zinc-50 text-zinc-700 text-sm font-semibold transition-all">
+            Explore Templates
+          </a>
         </div>
       </div>
       
-      <!-- Hero Interactive Mockup Dashboard (Upgraded Corporate Style) -->
+      <!-- Hero High-Fidelity Mockup Dashboard (Replicated exactly from page.tsx) -->
       <div class="lg:col-span-6 w-full flex justify-center lg:justify-end">
-        <div class="relative w-full max-w-md bg-white border border-zinc-200/60 rounded-2xl shadow-xl shadow-zinc-100 overflow-hidden transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl">
+        <div class="relative w-full max-w-md perspective-[2000px]">
           
-          <!-- Windows top bar -->
-          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-100 bg-zinc-50/50">
-            <div class="flex gap-1.5">
-              <div class="w-2.5 h-2.5 rounded-full bg-zinc-200"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-zinc-200"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-zinc-200"></div>
-            </div>
-            <div class="inline-flex items-center px-2 py-0.5 rounded bg-brand-green/10 text-brand-green border border-brand-green/20 text-[9px] font-bold tracking-wider uppercase">
-              Active: Product Delivery
-            </div>
-          </div>
+          <!-- Background glow -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-brand-blue/10 blur-[80px] rounded-full z-0"></div>
           
-          <div class="p-5 space-y-5">
+          <!-- Main Panel -->
+          <div class="relative z-10 rounded-2xl border border-zinc-200 bg-white/80 backdrop-blur-xl shadow-2xl overflow-hidden transition-transform duration-700 hover:scale-[1.02]">
             
-            <!-- Context Header with Roles -->
-            <div class="flex items-center justify-between">
-              <div>
-                <h3 class="text-xs font-semibold text-zinc-900">Continuous Delivery</h3>
-                <p class="text-[10px] text-zinc-400">Team Lead orchestrating 4 agents</p>
+            <!-- Window top bar -->
+            <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-100 bg-zinc-50/50">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
               </div>
-              <div class="flex -space-x-1.5">
-                <div class="w-6 h-6 rounded-full border-2 border-white bg-blue-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-40">TL</div>
-                <div class="w-6 h-6 rounded-full border-2 border-white bg-emerald-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-30">PM</div>
-                <div class="w-6 h-6 rounded-full border-2 border-white bg-indigo-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-20">SA</div>
-                <div class="w-6 h-6 rounded-full border-2 border-white bg-zinc-700 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-10">SE</div>
+              <div class="inline-flex items-center px-2 py-0.5 rounded bg-brand-blue/10 text-brand-blue border border-brand-blue/20 text-[9px] font-bold tracking-wider uppercase">
+                Active: Product Delivery
               </div>
             </div>
-
-            <!-- Task Progress Widget -->
-            <div class="space-y-3">
-              <div class="flex items-center gap-3 p-3 rounded-xl border border-zinc-100 bg-zinc-50/30">
-                <div class="p-1.5 rounded-lg bg-brand-blue/10 text-brand-blue">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
+            
+            <div class="p-5 space-y-5">
+              
+              <!-- Context Header with Roles -->
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-semibold text-zinc-900">Continuous Delivery</h3>
+                  <p class="text-[10px] text-zinc-400">Team Lead orchestrating 4 agents</p>
                 </div>
-                <div class="flex-1">
-                  <div class="flex justify-between mb-1.5">
-                    <span class="text-[10px] font-semibold text-zinc-800">Implement OAuth2</span>
-                    <span class="text-[9px] font-medium text-brand-blue bg-brand-blue/5 px-1.5 py-0.5 rounded">In Progress</span>
+                <div class="flex -space-x-1.5">
+                  <div class="w-6 h-6 rounded-full border-2 border-white bg-blue-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-40">TL</div>
+                  <div class="w-6 h-6 rounded-full border-2 border-white bg-amber-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-30">PM</div>
+                  <div class="w-6 h-6 rounded-full border-2 border-white bg-violet-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-20">SA</div>
+                  <div class="w-6 h-6 rounded-full border-2 border-white bg-indigo-500 flex items-center justify-center text-[8px] font-bold text-white shadow-sm z-10">SE</div>
+                </div>
+              </div>
+
+              <!-- Task Progress Widget -->
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 rounded-xl border border-zinc-100 bg-zinc-50/30">
+                  <div class="p-1.5 rounded-lg bg-brand-blue/10 text-brand-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
                   </div>
-                  <div class="w-full bg-zinc-100 rounded-full h-1.5 overflow-hidden">
-                    <div class="bg-brand-blue h-full rounded-full w-[65%] animate-pulse"></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-[10px] font-semibold text-zinc-800">Implement OAuth2</span>
+                      <span class="text-[9px] font-medium text-brand-blue bg-brand-blue/5 px-1.5 py-0.5 rounded">In Progress</span>
+                    </div>
+                    <div class="w-full bg-zinc-100 rounded-full h-1.5 overflow-hidden">
+                      <div class="bg-brand-blue h-full rounded-full w-[65%] animate-pulse"></div>
+                    </div>
                   </div>
+                </div>
+                
+                <!-- Human approval step -->
+                <div class="flex items-center justify-between p-3 rounded-xl border border-yellow-200/50 bg-yellow-50/20">
+                  <div class="flex items-center gap-3">
+                    <div class="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span class="block text-[10px] font-semibold text-zinc-800">Pending Approval: DB Migration</span>
+                      <span class="block text-[9px] text-zinc-400">Security Gate Review required</span>
+                    </div>
+                  </div>
+                  <button class="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-[9px] font-bold transition-all shadow-sm">
+                    Approve
+                  </button>
                 </div>
               </div>
               
-              <!-- Human approval step -->
-              <div class="flex items-center justify-between p-3 rounded-xl border border-yellow-200/50 bg-yellow-50/20">
-                <div class="flex items-center gap-3">
-                  <div class="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <span class="block text-[10px] font-semibold text-zinc-800">Pending Approval: DB Migration</span>
-                    <span class="block text-[9px] text-zinc-400">Security Gate Review required</span>
-                  </div>
-                </div>
-                <button class="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-[9px] font-bold transition-all shadow-sm">
-                  Approve
-                </button>
-              </div>
             </div>
-            
-            <!-- Live Logs / Stream -->
-            <div class="p-3 bg-zinc-950 rounded-xl font-mono text-[9px] text-zinc-400 space-y-1.5">
-              <div class="text-zinc-500 uppercase text-[8px] tracking-wider font-semibold border-b border-zinc-900 pb-1 flex justify-between">
-                <span>Agent Activity Logs</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-green animate-ping"></span> Live</span>
-              </div>
-              <div class="flex gap-2"><span class="text-zinc-600">></span> <span>[SE] Initiating OAuth2 coding agent...</span></div>
-              <div class="flex gap-2"><span class="text-zinc-600">></span> <span class="text-brand-green">[SA] Architecture schema approved.</span></div>
-              <div class="flex gap-2"><span class="text-zinc-600">></span> <span>[TL] Workspace container initialized.</span></div>
-            </div>
-
           </div>
           
-          <!-- Floating Health Widget -->
-          <div class="absolute -right-4 bottom-28 bg-white border border-zinc-200/50 rounded-xl shadow-lg p-3 flex items-center gap-3 transition-transform hover:scale-105 duration-300">
-            <div class="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse"></div>
-            <div>
-              <div class="text-[9px] text-zinc-400 font-medium">Health Score</div>
-              <div class="text-sm font-extrabold text-zinc-900 tracking-tight">98%</div>
+          <!-- Floating Activity / Health Widget (Matching Next.js Bounces) -->
+          <div class="absolute -right-8 top-12 z-20 animate-float-up hidden md:block">
+            <div class="rounded-xl border border-zinc-200/60 bg-white/95 backdrop-blur-md shadow-xl p-3.5 flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-brand-green">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              <div>
+                <div class="text-[9px] text-zinc-400 font-bold uppercase tracking-wide">Health Score</div>
+                <div class="text-lg font-extrabold text-zinc-900 tracking-tight">98%</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating Live Stream Widget (Matching Next.js Bounces Reverse) -->
+          <div class="absolute -left-12 bottom-12 z-20 animate-float-down hidden md:block">
+            <div class="rounded-xl border border-zinc-200/60 bg-white/95 backdrop-blur-md shadow-xl p-4 w-52 space-y-2.5">
+              <div class="text-[8px] font-bold text-zinc-400 uppercase tracking-wider border-b border-zinc-100 pb-1.5">Live Stream</div>
+              <div class="space-y-2">
+                <div class="flex gap-2 items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-blue animate-ping"></span>
+                  <span class="text-[10px] text-zinc-600">SE opened PR #142</span>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+                  <span class="text-[10px] text-zinc-600">SA reviewed architecture</span>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -216,24 +255,24 @@
     </div>
   </section>
 
-  <!-- Execution Telemetry / Stats -->
-  <section class="border-y border-zinc-100 bg-zinc-50/30">
+  <!-- Execution Telemetry / Stats (High-Fidelity) -->
+  <section class="border-y border-zinc-100 bg-zinc-50/30 backdrop-blur-sm relative z-10">
     <div class="max-w-5xl mx-auto px-6 py-12">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-200/60">
         <div class="flex flex-col items-center justify-center text-center px-4 transition-transform hover:scale-105 duration-300">
-          <span class="text-4xl font-extrabold text-zinc-900 tracking-tight mb-1">10×</span>
+          <span class="text-4xl lg:text-5xl font-extrabold bg-gradient-to-br from-zinc-900 to-zinc-600 bg-clip-text text-transparent tracking-tight mb-2">10×</span>
           <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Execution Velocity</span>
         </div>
-        <div class="flex flex-col items-center justify-center pt-6 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
-          <span class="text-4xl font-extrabold text-zinc-900 tracking-tight mb-1">100%</span>
+        <div class="flex flex-col items-center justify-center pt-8 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
+          <span class="text-4xl lg:text-5xl font-extrabold bg-gradient-to-br from-zinc-900 to-zinc-600 bg-clip-text text-transparent tracking-tight mb-2">100%</span>
           <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Auditability</span>
         </div>
-        <div class="flex flex-col items-center justify-center pt-6 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
-          <span class="text-4xl font-extrabold text-zinc-900 tracking-tight mb-1">24/7</span>
+        <div class="flex flex-col items-center justify-center pt-8 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
+          <span class="text-4xl lg:text-5xl font-extrabold bg-gradient-to-br from-zinc-900 to-zinc-600 bg-clip-text text-transparent tracking-tight mb-2">24/7</span>
           <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Autonomous Operation</span>
         </div>
-        <div class="flex flex-col items-center justify-center pt-6 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
-          <span class="text-4xl font-extrabold text-zinc-900 tracking-tight mb-1">0</span>
+        <div class="flex flex-col items-center justify-center pt-8 md:pt-0 text-center px-4 transition-transform hover:scale-105 duration-300">
+          <span class="text-4xl lg:text-5xl font-extrabold bg-gradient-to-br from-zinc-900 to-zinc-600 bg-clip-text text-transparent tracking-tight mb-2">0</span>
           <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Context Lost</span>
         </div>
       </div>
@@ -241,89 +280,93 @@
   </section>
 
   <!-- How Kivo Orchestrates Work -->
-  <section class="relative z-10 max-w-5xl mx-auto px-6 py-24">
-    <div class="text-center mb-16 max-w-xl mx-auto space-y-3">
-      <span class="text-xs font-bold text-brand-blue uppercase tracking-widest">Execution Cycle</span>
-      <h2 class="font-sans font-extrabold text-3xl sm:text-4xl tracking-tight text-zinc-900">How Kivo orchestrates work.</h2>
-    </div>
+  <section class="relative z-10 max-w-5xl mx-auto px-6 py-24 sm:py-32">
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-green/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
     
-    <div class="grid md:grid-cols-3 gap-10 relative">
-      <!-- Connection bar for desktop -->
-      <div class="hidden md:block absolute top-7 left-[15%] right-[15%] h-[1px] bg-zinc-200"></div>
-      
-      <div class="relative space-y-4 group">
-        <div class="w-14 h-14 bg-white border border-zinc-200/60 shadow-sm rounded-2xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
-          01
-        </div>
-        <h3 class="text-lg font-bold text-zinc-900">Create your AI team</h3>
-        <p class="text-sm text-zinc-500 leading-relaxed font-light">Deploy a structured squad of agents with defined roles, responsibilities, and dedicated workspaces.</p>
+    <div class="relative z-10">
+      <div class="text-center mb-16 max-w-xl mx-auto space-y-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-brand-blue/5 text-brand-blue border border-brand-blue/10">
+          Execution Cycle
+        </span>
+        <h2 class="font-sans font-extrabold text-3xl sm:text-4xl tracking-tight text-zinc-900">How Kivo orchestrates work.</h2>
       </div>
       
-      <div class="relative space-y-4 group">
-        <div class="w-14 h-14 bg-white border border-zinc-200/60 shadow-sm rounded-2xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
-          02
+      <div class="grid md:grid-cols-3 gap-10 relative">
+        <!-- Connecting line for desktop -->
+        <div class="hidden md:block absolute top-6 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-zinc-200 via-zinc-200 to-zinc-100"></div>
+        
+        <div class="relative space-y-4 group">
+          <div class="w-12 h-12 bg-white border border-zinc-200/80 shadow-sm rounded-xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-zinc-900">Create your AI team</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light">Deploy a structured squad of agents with defined roles, responsibilities, and dedicated workspaces.</p>
         </div>
-        <h3 class="text-lg font-bold text-zinc-900">Give it work</h3>
-        <p class="text-sm text-zinc-500 leading-relaxed font-light">Assign complex engineering objectives. The Team Lead agent automatically delegates subtasks to specialized developers.</p>
-      </div>
-      
-      <div class="relative space-y-4 group">
-        <div class="w-14 h-14 bg-white border border-zinc-200/60 shadow-sm rounded-2xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
-          03
+        
+        <div class="relative space-y-4 group">
+          <div class="w-12 h-12 bg-white border border-zinc-200/80 shadow-sm rounded-xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-zinc-900">Give it work</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light">Assign complex engineering objectives. The Team Lead agent automatically delegates subtasks to specialized developers.</p>
         </div>
-        <h3 class="text-lg font-bold text-zinc-900">Monitor and approve</h3>
-        <p class="text-sm text-zinc-500 leading-relaxed font-light">Review real-time code modifications, grant permission for sensitive integrations, and track the overall score.</p>
+        
+        <div class="relative space-y-4 group">
+          <div class="w-12 h-12 bg-white border border-zinc-200/80 shadow-sm rounded-xl flex items-center justify-center font-bold text-zinc-900 text-lg relative z-10 group-hover:border-brand-blue group-hover:text-brand-blue transition-colors">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-zinc-900">Monitor and approve</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light">Review real-time code modifications, grant permission for sensitive integrations, and track the overall score.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Structured Autonomy Comparison (Governance) -->
-  <section class="border-t border-zinc-100 bg-zinc-50/10 py-24">
+  <!-- Governance & Showcase (Ported exactly from Next.js visual showcase) -->
+  <section class="py-24 sm:py-32 bg-zinc-50/30 border-y border-zinc-100 relative z-10">
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         
         <!-- Interactive Code/Memory telemetry display -->
-        <div class="bg-white border border-zinc-200/60 rounded-3xl p-8 shadow-sm flex flex-col gap-6 relative overflow-hidden">
+        <div class="order-2 lg:order-1 relative h-[500px] rounded-2xl border border-zinc-200 bg-white/40 backdrop-blur-sm overflow-hidden shadow-2xl p-6 flex flex-col gap-6">
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-50/20"></div>
-          <div class="relative z-10 flex flex-col h-full space-y-6">
-            <div class="flex items-center justify-between border-b border-zinc-100 pb-4">
-              <div class="flex items-center gap-2">
-                <span class="w-3.5 h-3.5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-2.5 h-2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-                  </svg>
-                </span>
-                <span class="text-xs font-bold text-zinc-800">Git Persistent Memory</span>
-              </div>
-              <span class="text-[9px] font-mono text-zinc-400">Blob: a3f89b2</span>
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="flex items-center gap-3 mb-8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="text-brand-blue w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+              </svg>
+              <span class="font-bold text-zinc-900">Context Memory</span>
             </div>
             
-            <div class="space-y-4">
-              <div class="p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50 relative">
-                <span class="absolute right-4 top-4 text-[8px] font-mono text-zinc-400">0.02ms</span>
-                <span class="block text-[10px] font-semibold text-zinc-800 mb-1.5">Decision: Database Engine</span>
-                <code class="block font-mono text-[9px] text-zinc-600 bg-white p-2 rounded-lg border border-zinc-200/40">
-                  {<br>
-                  &nbsp;&nbsp;"engine": "PostgreSQL over MySQL",<br>
-                  &nbsp;&nbsp;"reason": "Strict transactional consistency requirements"<br>
-                  }
-                </code>
+            <div class="space-y-4 flex-1">
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 shadow-sm relative">
+                <div class="text-[9px] text-zinc-400 mb-1.5 font-mono">Git Blob • a3f89b2</div>
+                <div class="font-mono text-xs text-zinc-800 leading-normal">
+                  <span class="text-zinc-400">{</span><br>
+                  &nbsp;&nbsp;<span class="text-brand-blue">"decision"</span>: <span class="text-brand-green">"Use Postgres over MySQL"</span>,<br>
+                  &nbsp;&nbsp;<span class="text-brand-blue">"reason"</span>: <span class="text-zinc-500">"Team preference and existing infra setup"</span><br>
+                  <span class="text-zinc-400">}</span>
+                </div>
               </div>
               
-              <div class="p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50 opacity-75 scale-95 origin-top relative">
-                <span class="block text-[10px] font-semibold text-zinc-800 mb-1.5">Pattern: API Design</span>
-                <code class="block font-mono text-[9px] text-zinc-600 bg-white p-2 rounded-lg border border-zinc-200/40">
-                  { "style": "RESTful JSON specs" }
-                </code>
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 shadow-sm opacity-80 scale-95 origin-top relative">
+                <div class="text-[9px] text-zinc-400 mb-1.5 font-mono">Git Blob • 8f2c1a9</div>
+                <div class="font-mono text-xs text-zinc-800 leading-normal">
+                  <span class="text-zinc-400">{</span><br>
+                  &nbsp;&nbsp;<span class="text-brand-blue">"api_pattern"</span>: <span class="text-brand-green">"RESTful with GraphQL gateway"</span><br>
+                  <span class="text-zinc-400">}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Copy and comparative list -->
-        <div class="space-y-6">
+        <!-- Governance Copy and checklist items -->
+        <div class="order-1 lg:order-2 space-y-6">
           <div class="space-y-3">
-            <span class="text-xs font-bold text-brand-blue uppercase tracking-widest">Structured Autonomy</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-brand-blue/5 text-brand-blue border border-brand-blue/10">
+              Structured Governance
+            </span>
             <h2 class="font-sans font-extrabold text-3xl sm:text-4xl tracking-tight text-zinc-900 leading-tight">Control and visibility at every level.</h2>
             <p class="font-sans text-sm text-zinc-500 font-light leading-relaxed">
               Kivo replaces black-box, unpredictable chatbot prompts with a governed, structured, and measurable execution engine. Your agent teams operate independently, but never without strict rails.
@@ -331,39 +374,33 @@
           </div>
           
           <ul class="space-y-5">
-            <li class="flex gap-4 group">
-              <span class="w-6 h-6 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 h-3.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-              </span>
+            <li class="flex gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 text-brand-blue shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
               <div>
-                <span class="block text-sm font-bold text-zinc-800">Strict Role Workflows</span>
-                <span class="block text-xs text-zinc-400 font-light">Generic AI has unpredictable outputs; Kivo operates inside strict guardrails.</span>
+                <div class="font-bold text-zinc-900 text-sm">Strict Role Workflows</div>
+                <div class="text-xs text-zinc-500 leading-normal font-light">Generic AI has unpredictable outputs; Kivo operates inside strict guardrails.</div>
               </div>
             </li>
             
-            <li class="flex gap-4 group">
-              <span class="w-6 h-6 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 h-3.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-              </span>
+            <li class="flex gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 text-brand-blue shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
               <div>
-                <span class="block text-sm font-bold text-zinc-800">Git-Backed Memory Persistence</span>
-                <span class="block text-xs text-zinc-400 font-light">Agents store persistent context in git history, preventing task-level memory loss.</span>
+                <div class="font-bold text-zinc-900 text-sm">Git-Backed Memory Persistence</div>
+                <div class="text-xs text-zinc-500 leading-normal font-light">Agents store persistent context in git history, preventing task-level memory loss.</div>
               </div>
             </li>
             
-            <li class="flex gap-4 group">
-              <span class="w-6 h-6 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 h-3.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-              </span>
+            <li class="flex gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 text-brand-blue shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
               <div>
-                <span class="block text-sm font-bold text-zinc-800">Full Pipeline Observability</span>
-                <span class="block text-xs text-zinc-400 font-light">Every single execution, file modification, and decision is tracked and analyzed live.</span>
+                <div class="font-bold text-zinc-900 text-sm">Full Pipeline Observability</div>
+                <div class="text-xs text-zinc-500 leading-normal font-light">Every single execution, file modification, and decision is tracked and analyzed live.</div>
               </div>
             </li>
           </ul>
@@ -374,9 +411,11 @@
   </section>
 
   <!-- Deployable Team Templates (Dynamic API Integration) -->
-  <section id="templates" class="max-w-5xl mx-auto px-6 py-24">
+  <section id="templates" class="max-w-5xl mx-auto px-6 py-24 sm:py-32 relative z-10">
     <div class="mb-16 text-center max-w-xl mx-auto space-y-3">
-      <span class="text-xs font-bold text-brand-blue uppercase tracking-widest">Infrastructure Templates</span>
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-brand-blue/5 text-brand-blue border border-brand-blue/10">
+        Infrastructure Templates
+      </span>
       <h2 class="font-sans font-extrabold text-3xl sm:text-4xl tracking-tight text-zinc-900">Deployable team infrastructure.</h2>
       <p class="font-sans text-sm text-zinc-500 font-light leading-relaxed">Instantly provision specialized AI squads pre-configured with defined roles, instructions, and standard workflows.</p>
     </div>
@@ -385,19 +424,19 @@
     <div id="templates-grid" class="grid gap-6 md:grid-cols-3">
       <!-- Loading skeletons (Fades out when API call completes) -->
       <div class="h-64 rounded-2xl border border-zinc-200/50 bg-zinc-50/10 animate-pulse flex flex-col p-8 space-y-4">
-        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl font-bold"></div>
+        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl"></div>
         <div class="w-1/2 h-4 bg-zinc-200/60 rounded"></div>
         <div class="w-3/4 h-3 bg-zinc-200/60 rounded"></div>
         <div class="w-full h-3 bg-zinc-200/60 rounded flex-1"></div>
       </div>
       <div class="h-64 rounded-2xl border border-zinc-200/50 bg-zinc-50/10 animate-pulse flex flex-col p-8 space-y-4">
-        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl font-bold"></div>
+        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl"></div>
         <div class="w-1/2 h-4 bg-zinc-200/60 rounded"></div>
         <div class="w-3/4 h-3 bg-zinc-200/60 rounded"></div>
         <div class="w-full h-3 bg-zinc-200/60 rounded flex-1"></div>
       </div>
       <div class="h-64 rounded-2xl border border-zinc-200/50 bg-zinc-50/10 animate-pulse flex flex-col p-8 space-y-4">
-        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl font-bold"></div>
+        <div class="w-12 h-12 bg-zinc-200/60 rounded-xl"></div>
         <div class="w-1/2 h-4 bg-zinc-200/60 rounded"></div>
         <div class="w-3/4 h-3 bg-zinc-200/60 rounded"></div>
         <div class="w-full h-3 bg-zinc-200/60 rounded flex-1"></div>
