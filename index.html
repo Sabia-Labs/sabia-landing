@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabiá Labs | Modern Software Systems</title>
+  <meta name="description" content="Sabiá Labs builds modern software systems that are inherently cloud-native and AI-native, starting with Kivo.">
+  
+  <!-- SEO & Favicons -->
+  <link rel="icon" type="image/svg+xml" href="public/KIVO.svg">
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#2563eb',    // Sabiá Blue
+              green: '#10b981',   // Kivo Green
+              black: '#09090b',   // Corporate Black
+            },
+            lightbg: '#ffffff',   // Ultra clean pure white
+          },
+          fontFamily: {
+            sans: ['Outfit', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for clean animations and subtle effects -->
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+    }
+
+    /* Ambient Blue/Green Glow Effects */
+    .glow-spot-blue {
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .glow-spot-green {
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-lightbg text-zinc-800 antialiased overflow-x-hidden">
+
+  <!-- Ambient Light Grid and Blue/Green Glow Background -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Very soft blue glow top left -->
+    <div class="absolute -top-[10%] left-[10%] w-[70%] h-[60%] glow-spot-blue blur-[60px] opacity-80"></div>
+    <!-- Very soft green glow bottom right -->
+    <div class="absolute -bottom-[20%] right-[10%] w-[60%] h-[60%] glow-spot-green blur-[80px] opacity-70"></div>
+    <!-- Subtle Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#00000002_1px,transparent_1px),linear-gradient(to_bottom,#00000002_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+  </div>
+
+  <!-- Main Corporate Wrapper -->
+  <main class="relative z-10 min-h-screen flex flex-col justify-between">
+    
+    <!-- Hero / Corporate Info Section -->
+    <section class="max-w-4xl mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center">
+      
+      <!-- Centerpiece: Sabiá Labs Logo -->
+      <div class="reveal flex flex-col items-center mb-10">
+        <img src="public/sabia.png" alt="Sabiá Labs Logo" class="h-40 w-auto object-contain transition-transform duration-500 hover:scale-[1.02]">
+        <h1 class="mt-5 font-sans font-extrabold text-3xl tracking-tight text-zinc-900">
+          Sabiá Labs
+        </h1>
+        <!-- Elegant brand harmony divider (Blue to Green gradient) -->
+        <div class="w-16 h-[2px] bg-gradient-to-r from-brand-blue to-brand-green rounded mt-4"></div>
+      </div>
+
+      <!-- Core Description -->
+      <div class="reveal max-w-2xl space-y-6">
+        <p class="font-sans text-xl sm:text-2xl text-zinc-500 font-light leading-relaxed">
+          At Sabiá Labs, we build modern software systems that are inherently cloud-native and AI-native. Our platforms follow the most advanced cloud and AI standards in the industry to solve complex engineering workflows, starting with Kivo, our platform for sandboxed developer agents.
+        </p>
+      </div>
+
+      <!-- Quick Contact Info -->
+      <div class="reveal mt-14 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-400">
+        <div>
+          <span>For support & Kivo assistance:</span>
+          <a href="mailto:support@sabialabs.de" class="text-zinc-600 hover:text-brand-blue font-medium transition-colors underline decoration-dotted">support@sabialabs.de</a>
+        </div>
+        <div class="hidden sm:block text-zinc-300">|</div>
+        <div>
+          <span>Corporate inquiries:</span>
+          <a href="mailto:admin@sabialabs.de" class="text-zinc-600 hover:text-brand-blue font-medium transition-colors underline decoration-dotted">admin@sabialabs.de</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Product Section -->
+    <section class="max-w-5xl mx-auto px-6 py-12 w-full border-t border-zinc-100">
+      
+      <!-- Product Header -->
+      <div class="reveal text-center mb-10">
+        <h2 class="font-sans font-bold text-xs uppercase tracking-widest text-zinc-400">
+          Featured Product
+        </h2>
+      </div>
+
+      <!-- Kivo Highlight Container -->
+      <div class="reveal bg-white border border-zinc-200/50 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+        
+        <!-- Product Identity Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div class="flex items-center space-x-3.5">
+            <img src="public/KIVO.svg" alt="Kivo Logo" class="h-10 w-auto">
+            <div class="flex flex-col">
+              <span class="font-sans font-extrabold text-2xl tracking-tight text-zinc-900">Kivo</span>
+              <span class="text-xs font-semibold text-brand-green uppercase tracking-widest">Autonomous Developer Agents</span>
+            </div>
+          </div>
+          
+          <div>
+            <a href="https://kivo.sabialabs.de" target="_blank" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand-black hover:bg-zinc-800 text-white text-sm font-semibold transition-all shadow-sm hover:shadow-md">
+              Launch Kivo Portal <span class="inline-block ml-1.5">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <p class="font-sans text-zinc-600 leading-relaxed max-w-3xl">
+          Kivo is our flagship platform—an autonomous software developer agent orchestrator designed to deploy, monitor, and collaborate with isolated AI developers securely within your private Kubernetes infrastructure.
+        </p>
+
+        <!-- Clean Image showcase -->
+        <div class="relative overflow-hidden rounded-2xl border border-zinc-200 shadow-md">
+          <img src="public/kivo marketing.png" alt="Kivo Agent Interface Dashboard" class="w-full h-auto object-cover">
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 border-t border-zinc-100 text-center relative z-10 mt-12 bg-zinc-50/50">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+        <div>
+          © 2026 Sabiá Labs. All rights reserved.
+        </div>
+        <div class="flex space-x-4">
+          <a href="mailto:admin@sabialabs.de" class="hover:text-brand-blue transition-colors">Contact</a>
+          <span>·</span>
+          <a href="https://kivo.sabialabs.de" class="hover:text-brand-green transition-colors">Kivo App</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Script for reveal animation on scroll -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const revealElements = document.querySelectorAll(".reveal");
+
+      function checkReveal() {
+        const triggerBottom = window.innerHeight * 0.9;
+        
+        revealElements.forEach((el) => {
+          const elTop = el.getBoundingClientRect().top;
+          
+          if (elTop < triggerBottom) {
+            el.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", checkReveal);
+      // Run once immediately on load
+      checkReveal();
+    });
+  </script>
+
+</body>
+</html>
